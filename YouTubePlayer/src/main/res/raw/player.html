@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+            background: #000000;
+            overflow: hidden;
+            position: fixed;
+        }
+    </style>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <script src="https://www.youtube.com/iframe_api"></script>
+    </head>
+
+    <body>
+        <div id="playerId"></div>
+    </body>
+
+    <script type="text/javascript">
+    	var player;
+    	function onYouTubeIframeAPIReady() {
+    		player = new YT.Player('playerId', {
+    			height: '100%', // 360
+    			width: '100%', // 640
+    			events: {
+    				'onReady': onPlayerReady,
+    				'onStateChange': onPlayerStateChange,
+    				'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+    				'onPlaybackRateChange': onPlayerPlaybackRateChange,
+    				'onError': onPlayerError,
+    				'onApiChange': onPlayerApiChange
+    			},
+    			playerVars: {
+    				'autoplay': 0, // Values: 0 or 1. Default is 0. Sets whether or not the initial video will autoplay when the player loads.
+    				'autohide': 1, // Values: 2 (default), 1, and 0. This parameter indicates whether the video controls will automatically hide after a video begins playing
+    				'controls': 0, // Values: 0 (do not display), 1, or 2. Default is 1. This parameter indicates whether the video player controls will display
+    				'enablejsapi': 1, // Values: 0 or 1. Default is 0. Setting this to 1 will enable the Javascript API
+    				'fs': 0, // Values: 0 or 1. The default value is 1, which causes the fullscreen button to display. Setting this parameter to 0 prevents the fullscreen button from displaying
+    				'origin' : 'https://www.youtube.com',  // This parameter provides an extra security measure for the IFrame API and is only supported for IFrame embeds. If you are using the IFrame API, which means you are setting the enablejsapi parameter value to 1, you should always specify your domain as the origin parameter value
+    				'rel': 0, // Values: 0 or 1. Default is 1. This parameter indicates whether the player should show related videos when playback of the initial video ends
+    				'showinfo': 0, // Values: 0 or 1. The parameter's default value is 1. If you set the parameter value to 0, then the player will not display information like the video title and uploader before the video starts playing
+    				'iv_load_policy': 3  // Values: 1 or 3. Default is 1. Setting to 1 will cause video annotations to be shown by default, whereas setting to 3 will cause video annotations to not be shown by default
+    			}
+    		});
+    	}
+
+    	function onPlayerReady(event) {
+    		console.log('[JS] player is ready');
+
+    		onReady();
+    	}
+
+    	// id of the task used to periodically send out the playback seconds
+    	var timerTaskId = 0;
+    	function onPlayerStateChange(event) {
+    		// stop task
+            clearTimeout(timerTaskId);
+
+            switch (event.data) {
+            	case YT.PlayerState.UNSTARTED: {
+                    onStateChange("UNSTARTED");
+                    break;
+                }
+
+            	case YT.PlayerState.ENDED: {
+                    onStateChange("ENDED");
+                    break;
+                }
+
+                case YT.PlayerState.PLAYING: {
+                    onStateChange("PLAYING");
+
+                    // start task
+                    timerTaskId = setInterval(function() {
+                        onCurrentSeconds();
+                    }, 100);
+
+                    // data available only if player is ready
+                    var videoData = player.getVideoData();
+                    var title = videoData['title'];
+                    var videoId = videoData['video_id'];
+
+                    // send video data
+                    sendDuration();
+                    sendVideoTitle(title);
+                    sendVideoId(videoId)
+                    break;
+                }
+
+                case YT.PlayerState.PAUSED: {
+                    onStateChange("PAUSED");
+                    break;
+                }
+
+                case YT.PlayerState.BUFFERING: {
+                    onStateChange("BUFFERING");
+                    break;
+                }
+
+                case YT.PlayerState.CUED: {
+                    onStateChange("CUED");
+                    break;
+                }
+            }
+        }
+
+        function onPlayerPlaybackQualityChange(playbackQuality) {
+        	console.log('[JS] quality changed to ' +playbackQuality.data);
+
+        	onPlaybackQualityChange(playbackQuality.data);
+        	getAvailableQualityLevels(); // for return available quality levels
+        }
+
+        function onPlayerPlaybackRateChange(playbackRate) {
+        	console.log('[JS] playback rate changed to ' +playbackRate.data);
+
+        	onPlaybackRateChange(playbackRate.data);
+        }
+
+        function onPlayerError(error) {
+        	console.log('[JS] An error occurred: ' +error.data);
+        	console.log('[JS] An error occurred: ' +JSON.stringify(error));
+
+        	onError(error.data);
+        }
+
+        function onPlayerApiChange() {
+        	console.log('[JS] player API changed');
+
+        	onApiChange();
+        }
+
+        // WEB to APP functions
+
+        function onReady() {
+        	window.YouTubePlayerBridge.onReady();
+        }
+
+        function onStateChange(state) {
+        	window.YouTubePlayerBridge.onStateChange(state);
+        }
+
+        function onPlaybackQualityChange(quality) {
+        	window.YouTubePlayerBridge.onPlaybackQualityChange(quality);
+        }
+
+        function onPlaybackRateChange(rate) {
+            window.YouTubePlayerBridge.onPlaybackRateChange(rate);
+        }
+
+        function onError(error) {
+        	window.YouTubePlayerBridge.onError(error);
+        }
+
+        function onApiChange() {
+        	window.YouTubePlayerBridge.onApiChange();
+        }
+
+        function onCurrentSeconds() {
+        	window.YouTubePlayerBridge.currentSeconds(player.getCurrentTime());
+        }
+
+        function sendDuration() {
+        	window.YouTubePlayerBridge.onVideoDuration(player.getDuration());
+        }
+
+        function sendVideoTitle(title) {
+        	window.YouTubePlayerBridge.onVideoTitle(title);
+        }
+
+        function sendVideoId(id) {
+        	window.YouTubePlayerBridge.onVideoId(id);
+        }
+
+        function setLog(msg) {
+        	window.YouTubePlayerBridge.onLog(msg);
+        }
+
+        // APP to WEB functions
+
+        function seekTo(startSeconds) {
+        	console.log("[JS] Seek to " +startSeconds);
+
+            // startSeconds is not exactly precise because is an int
+        	if(Math.floor(player.getDuration()) == startSeconds)
+        	    startSeconds = player.getDuration();
+        	
+        	player.seekTo(startSeconds, true);
+        }
+
+        function pauseVideo() {
+        	console.log("[JS] Pause video");
+
+        	player.pauseVideo();
+        }
+
+        function playVideo() {
+        	console.log("[JS] Play video");
+
+        	player.playVideo();
+        }
+
+        function loadVideo(videoId, startSeconds) {
+        	console.log("[JS] Loading video: " +videoId + " - " + startSeconds);
+
+        	setLog("Loading video: " +videoId + " - " + startSeconds);
+
+            player.loadVideoById(videoId, startSeconds);
+        }
+
+        function cueVideo(videoId, startSeconds) {
+        	console.log("[JS] Cue video: " +videoId + " - " + startSeconds);
+            setLog("Cue video: " +videoId + " - " + startSeconds);
+
+            player.cueVideoById(videoId, startSeconds);
+        }
+
+        function getPlaybackQuality() {
+        	console.log("[JS] getPlaybackQuality");
+
+            player.getPlaybackQuality();
+        }
+
+        function setPlaybackQuality(suggestedQuality) {
+        	console.log("[JS] setPlaybackQuality: " + setPlaybackQuality);
+
+            player.setPlaybackQuality(suggestedQuality);
+        }
+
+        function getAvailableQualityLevels() {
+            var qualityLevels = player.getAvailableQualityLevels();
+            console.log("[JS] getAvailableQualityLevels: " + qualityLevels);
+            window.YouTubePlayerBridge.onReturnAvailableQualityLevels(qualityLevels);
+        }
+    </script>
+</html>

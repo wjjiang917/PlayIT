@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sdk_video_controls"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/sdk_panel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:clickable="true" />
+
+    <RelativeLayout
+        android:id="@+id/sdk_controls_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <View
+            android:id="@+id/sdk_drop_shadow_top"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/drop_shadow_top"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/sdk_drop_shadow_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/drop_shadow_bottom" />
+
+        <TextView
+            android:id="@+id/sdk_video_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:lines="1"
+            android:padding="8dp"
+            android:text=""
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/sdk_play_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/background_item_selected"
+            android:clickable="true"
+            android:contentDescription="@string/play_button"
+            android:padding="8dp"
+            android:src="@drawable/ic_play_36dp"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/sdk_progress"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/sdk_video_current_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/sdk_youtube_button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/sdk_youtube_button"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="8dp"
+            android:text="@string/null_time"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/sdk_video_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/sdk_youtube_button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@+id/sdk_youtube_button"
+            android:layout_toStartOf="@+id/sdk_youtube_button"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/null_time"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/sdk_youtube_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/sdk_setting_button"
+            android:background="@drawable/background_item_selected"
+            android:clickable="true"
+            android:contentDescription="@string/open_video_in_youtube"
+            android:padding="8dp"
+            android:src="@drawable/ic_youtube_24dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/sdk_setting_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/sdk_fullscreen_button"
+            android:background="@drawable/background_item_selected"
+            android:clickable="true"
+            android:contentDescription="@string/quality_setting"
+            android:padding="8dp"
+            android:src="@drawable/ic_setting_24dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/sdk_fullscreen_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/background_item_selected"
+            android:clickable="true"
+            android:contentDescription="@string/full_screen_button"
+            android:padding="8dp"
+            android:src="@drawable/ic_fullscreen_24dp" />
+
+        <SeekBar
+            android:id="@+id/sdk_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/sdk_youtube_button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@+id/sdk_youtube_button"
+            android:layout_toEndOf="@+id/sdk_video_current_time"
+            android:layout_toStartOf="@+id/sdk_video_duration"
+            android:maxHeight="100dp"
+            android:paddingBottom="6dp"
+            android:progressBackgroundTint="@color/red"
+            android:progressTint="@color/red"
+            android:thumbTint="@color/red" />
+
+        <ImageView
+            android:id="@+id/sdk_action_left_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="32dp"
+            android:layout_toStartOf="@+id/sdk_play_button"
+            android:background="@drawable/background_item_selected"
+            android:clickable="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_play_36dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/sdk_action_right_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="32dp"
+            android:layout_toEndOf="@+id/sdk_play_button"
+            android:background="@drawable/background_item_selected"
+            android:clickable="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_play_36dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+</FrameLayout>
