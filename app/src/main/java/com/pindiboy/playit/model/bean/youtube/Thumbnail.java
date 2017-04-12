@@ -14,6 +14,8 @@ public class Thumbnail extends RealmObject {
     public static final String TYPE_DEFAULT = "default";
     public static final String TYPE_MEDIUM = "medium";
     public static final String TYPE_HIGH = "high";
+    public static final String TYPE_STANDARD = "standard";
+    public static final String TYPE_MAXRES = "maxres";
 
     private String url;
     private int width;

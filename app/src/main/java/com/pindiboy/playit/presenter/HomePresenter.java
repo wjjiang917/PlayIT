@@ -28,11 +28,12 @@ public class HomePresenter extends RxPresenter<HomeContract.View> implements Hom
         addSubscribe(mApiService.fetchTrending(10, "")
                 .compose(RxUtil.rxSchedulerHelper())
                 .map(youTubeBean -> {
-                    Item<String> item = youTubeBean.getItems().get(0);
-                    Snippet snippet = item.getSnippet();
-                    snippet.setVideoId(item.getId());
-                    snippet.setThumbnail(item.getSnippet().getThumbnails().get(Thumbnail.TYPE_HIGH).getUrl());
-                    snippet.setFavourite(mRealmHelper.queryFavourite(item.getId()));
+                    for (Item<String> item : youTubeBean.getItems()) {
+                        Snippet snippet = item.getSnippet();
+                        snippet.setVideoId(item.getId());
+                        snippet.setThumbnail(item.getSnippet().getThumbnails().get(Thumbnail.TYPE_HIGH).getUrl());
+                        snippet.setFavourite(mRealmHelper.queryFavourite(item.getId()));
+                    }
                     return youTubeBean;
                 })
                 .subscribe(youTubeBean -> mView.onTrendingLoaded(youTubeBean),

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.pindiboy.playit.R;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,15 +29,28 @@ import java.io.InputStream;
 
 public class ImageUtil {
     public static void load(Context context, String url, ImageView iv) {
-        Glide.with(context).load(url).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(iv);
+        Glide.with(context)
+                .load(url)
+                .error(R.mipmap.default_image)
+                .placeholder(R.mipmap.default_image)
+                .crossFade()
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .into(iv);
     }
 
     public static void load(Activity activity, String url, ImageView iv) {
-        if (!activity.isDestroyed()) {
-            Glide.with(activity).load(url).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(iv);
+        if (!activity.isFinishing()) {
+            Glide.with(activity)
+                    .load(url)
+                    .error(R.mipmap.default_image)
+                    .placeholder(R.mipmap.default_image)
+                    .crossFade()
+                    .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .into(iv);
         }
     }
-
 
     static Bitmap getScaledBitmap(Context context, Uri imageUri, float maxWidth, float maxHeight, Bitmap.Config bitmapConfig) {
         String filePath = FileUtil.getRealPathFromURI(context, imageUri);

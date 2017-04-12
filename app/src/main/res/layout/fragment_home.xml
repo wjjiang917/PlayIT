@@ -39,7 +39,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="204dp">
+                android:layout_height="@dimen/item_video_wrap_height">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_trending"
@@ -88,7 +88,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="204dp">
+                android:layout_height="@dimen/item_video_wrap_height">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_cricket"
@@ -137,7 +137,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="204dp">
+                android:layout_height="@dimen/item_video_wrap_height">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_bollywood"
@@ -186,7 +186,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="204dp">
+                android:layout_height="@dimen/item_video_wrap_height">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_trailers"
