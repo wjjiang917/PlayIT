@@ -28,7 +28,10 @@
 
         <activity
             android:name=".ui.activity.PlayerActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout" />
-        <activity android:name=".ui.activity.SearchActivity" />
+            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.SearchActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 </manifest>

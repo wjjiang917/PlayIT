@@ -56,4 +56,14 @@ public class HomePresenter extends RxPresenter<HomeContract.View> implements Hom
                 .subscribe(youTubeBean -> mView.onChannelVideosLoaded(channelId, youTubeBean),
                         throwable -> Logger.e("", throwable)));
     }
+
+    @Override
+    public void addFavorite(Snippet video) {
+        mRealmHelper.insertFavourite(video);
+    }
+
+    @Override
+    public void removeFavorite(String videoId) {
+        mRealmHelper.deleteFavourite(videoId);
+    }
 }

@@ -1,6 +1,7 @@
 package com.pindiboy.playit.presenter.contract;
 
 import com.pindiboy.playit.model.bean.youtube.ItemId;
+import com.pindiboy.playit.model.bean.youtube.Snippet;
 import com.pindiboy.playit.model.bean.youtube.YouTubeBean;
 import com.pindiboy.playit.presenter.BasePresenter;
 import com.pindiboy.playit.ui.BaseView;
@@ -20,5 +21,9 @@ public interface HomeContract {
         void getTrending();
 
         void getChannelVideos(String channelId);
+
+        void addFavorite(Snippet video);
+
+        void removeFavorite(String videoId);
     }
 }
