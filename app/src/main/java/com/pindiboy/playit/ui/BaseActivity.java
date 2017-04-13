@@ -43,7 +43,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
 
         if (mPresenter != null)
             mPresenter.attachView(this);
-
+        App.getInstance().addActivity(this);
         // load data, render, bind event
         init();
     }
@@ -91,6 +91,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
         if (mPresenter != null)
             mPresenter.detachView();
         mUnBinder.unbind();
+        App.getInstance().removeActivity(this);
     }
 
     protected abstract void inject();

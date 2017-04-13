@@ -6,12 +6,14 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.pindiboy.playit.App;
 import com.pindiboy.playit.R;
 import com.pindiboy.playit.common.Constant;
 import com.pindiboy.playit.presenter.MainPresenter;
@@ -137,7 +139,12 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         if (mSearchView.isSearchOpen()) {
             mSearchView.closeSearch();
         } else {
-            super.onBackPressedSupport();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.app_name))
+                    .setMessage(getString(R.string.exit_message))
+                    .setNegativeButton(R.string.cancel, null)
+                    .setPositiveButton(R.string.sure, (dialogInterface, i) -> App.getInstance().exitApp());
+            builder.show();
         }
     }
 
