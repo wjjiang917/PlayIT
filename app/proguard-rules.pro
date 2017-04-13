@@ -162,4 +162,4 @@
 -dontwarn android.net.http.AndroidHttpClient
 
 # 项目代码
--keep class com.pindiboy.weddingvideos.model.** { *; }
+-keep class com.pindiboy.playit.model.** { *; }
