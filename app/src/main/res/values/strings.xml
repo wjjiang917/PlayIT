@@ -9,4 +9,11 @@
     <string name="exit_message">Are you sure to exit?</string>
     <string name="sure">Sure</string>
     <string name="cancel">Cancel</string>
+
+    <string name="about">See what the world is watching — from the hottest music videos to what’s trending in gaming,
+        entertainment, news, and more. Favorite videos you love, and share with friends.\n\n
+        ★ Built-in downloader and video player with resume capability.\n
+        ★ In built search engine for searching any video on the internet.\n
+        ★ Share the videos with your friends and family with few clicks.\n
+    </string>
 </resources>

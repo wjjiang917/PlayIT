@@ -7,7 +7,8 @@
     <item
         android:id="@+id/nav_download"
         android:icon="@drawable/ic_file_download_24dp"
-        android:title="Downloads" />
+        android:title="Downloads"
+        android:visible="false" />
     <item
         android:id="@+id/nav_favorite"
         android:icon="@drawable/ic_favorite_red_24dp"
@@ -15,5 +16,10 @@
     <item
         android:id="@+id/nav_settings"
         android:icon="@drawable/ic_settings_24dp"
-        android:title="Settings" />
+        android:title="Settings"
+        android:visible="false" />
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_error_outline_black_24dp"
+        android:title="About" />
 </menu>

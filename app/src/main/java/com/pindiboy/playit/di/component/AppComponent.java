@@ -6,6 +6,7 @@ import com.pindiboy.playit.di.module.HttpModule;
 import com.pindiboy.playit.di.module.PageModule;
 import com.pindiboy.playit.model.db.RealmHelper;
 import com.pindiboy.playit.model.http.ApiService;
+import com.pindiboy.playit.ui.fragment.AboutFragment;
 import com.pindiboy.playit.ui.fragment.FavoriteFragment;
 import com.pindiboy.playit.ui.fragment.MainFragment;
 
@@ -28,4 +29,6 @@ public interface AppComponent {
     MainFragment mainFragment();
 
     FavoriteFragment favoriteFragment();
+
+    AboutFragment aboutFragment();
 }

@@ -17,6 +17,7 @@ public interface Constant {
     int TYPE_HOME = 100;
     int TYPE_DOWNLOADS = 101;
     int TYPE_FAVORITES = 102;
+    int TYPE_ABOUT = 103;
 
     // SharePreference
     String SP_NAME = "sp_name";
@@ -27,5 +28,7 @@ public interface Constant {
     String BUNDLE_CHANNEL_ID = "bundle_channel_id";
     String INTENT_EXTRA_VIDEO_ID = "intent_extra_video_id";
     String INTENT_EXTRA_SEARCH_Q = "intent_extra_search_q";
-    String INTENT_EXTRA_CHANNELS = "intent_extra_channels";
+    String INTENT_EXTRA_CHANNEL_ID = "intent_extra_channel_id";
+    String INTENT_EXTRA_CHANNEL_TITLE = "intent_extra_channel_title";
+    String INTENT_EXTRA_CHANNEL_THUMBNAIL = "intent_extra_channel_thumbnail";
 }

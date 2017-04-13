@@ -1,5 +1,6 @@
 package com.pindiboy.playit.di.module;
 
+import com.pindiboy.playit.ui.fragment.AboutFragment;
 import com.pindiboy.playit.ui.fragment.FavoriteFragment;
 import com.pindiboy.playit.ui.fragment.MainFragment;
 
@@ -23,5 +24,11 @@ public class PageModule {
     @Provides
     FavoriteFragment provideFavorite() {
         return new FavoriteFragment();
+    }
+
+    @Singleton
+    @Provides
+    AboutFragment provideAbout() {
+        return new AboutFragment();
     }
 }

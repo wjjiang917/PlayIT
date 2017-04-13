@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.pindiboy.playit.di.module.ActivityModule;
 import com.pindiboy.playit.di.scope.ActivityScope;
+import com.pindiboy.playit.ui.activity.ChannelDetailActivity;
 import com.pindiboy.playit.ui.activity.MainActivity;
 import com.pindiboy.playit.ui.activity.PlayerActivity;
 import com.pindiboy.playit.ui.activity.SearchActivity;
@@ -26,4 +27,6 @@ public interface ActivityComponent {
     void inject(PlayerActivity playerActivity);
 
     void inject(SearchActivity searchActivity);
+
+    void inject(ChannelDetailActivity channelDetailActivity);
 }

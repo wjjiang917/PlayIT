@@ -27,11 +27,13 @@ public class DownloadActivity extends Activity {
     public static String INTENT_EXTRA_PARSEDASHMANIFEST = "intent_extra_parsedashmanifest";
     public static String INTENT_EXTRA_DOWNLOADDASH = "intent_extra_downloaddash";
     public static String INTENT_EXTRA_INCLUDEWEBM = "intent_extra_includewebm";
+    public static String INTENT_EXTRA_DOWNLOAD_DIR = "intent_extra_download_dir";
 
     private boolean parseDashManifest;
     private boolean downloadDash;
     private boolean includeWebM;
     private String videoId;
+    private String dir;
     private LinearLayout mainLayout;
     private ProgressBar mainProgressBar;
 
@@ -39,6 +41,7 @@ public class DownloadActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         videoId = getIntent().getStringExtra(INTENT_EXTRA_VIDEO_ID);
+        dir = getIntent().getStringExtra(INTENT_EXTRA_DOWNLOAD_DIR);
         parseDashManifest = getIntent().getBooleanExtra(INTENT_EXTRA_PARSEDASHMANIFEST, false);
         downloadDash = getIntent().getBooleanExtra(INTENT_EXTRA_DOWNLOADDASH, false);
         includeWebM = getIntent().getBooleanExtra(INTENT_EXTRA_INCLUDEWEBM, false);
@@ -120,8 +123,12 @@ public class DownloadActivity extends Activity {
         request.setTitle(downloadTitle);
         request.allowScanningByMediaScanner();
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
 
+        if (TextUtils.isEmpty(dir)) {
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+        } else {
+            request.setDestinationInExternalPublicDir(dir, fileName);
+        }
         DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
         manager.enqueue(request);
     }

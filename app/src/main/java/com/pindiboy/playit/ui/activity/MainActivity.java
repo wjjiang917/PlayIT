@@ -19,6 +19,7 @@ import com.pindiboy.playit.common.Constant;
 import com.pindiboy.playit.presenter.MainPresenter;
 import com.pindiboy.playit.presenter.contract.MainContract;
 import com.pindiboy.playit.ui.BaseActivity;
+import com.pindiboy.playit.ui.fragment.AboutFragment;
 import com.pindiboy.playit.ui.fragment.FavoriteFragment;
 import com.pindiboy.playit.ui.fragment.MainFragment;
 import com.pindiboy.playit.util.SPUtil;
@@ -43,6 +44,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Inject
     FavoriteFragment favoriteFragment;
+
+    @Inject
+    AboutFragment aboutFragment;
 
     private int hideFragment = Constant.TYPE_HOME;
     private int showFragment = Constant.TYPE_HOME;
@@ -73,7 +77,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         mDrawerLayout.addDrawerListener(mDrawerToggle);
         mLastMenuItem = mNavigationView.getMenu().findItem(R.id.nav_home);
         // load fragments
-        loadMultipleRootFragment(R.id.layout_main_content, 0, mainFragment, favoriteFragment);
+        loadMultipleRootFragment(R.id.layout_main_content, 0, mainFragment, favoriteFragment, aboutFragment);
 
         mNavigationView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -82,6 +86,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                     break;
                 case R.id.nav_favorite:
                     showFragment = Constant.TYPE_FAVORITES;
+                    break;
+                case R.id.nav_about:
+                    showFragment = Constant.TYPE_ABOUT;
                     break;
             }
             if (mLastMenuItem != null) {
@@ -154,6 +161,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 return mainFragment;
             case Constant.TYPE_FAVORITES:
                 return favoriteFragment;
+            case Constant.TYPE_ABOUT:
+                return aboutFragment;
         }
         return mainFragment;
     }
@@ -164,6 +173,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 return R.id.nav_home;
             case Constant.TYPE_FAVORITES:
                 return R.id.nav_favorite;
+            case Constant.TYPE_ABOUT:
+                return R.id.nav_about;
         }
         return R.id.nav_home;
     }

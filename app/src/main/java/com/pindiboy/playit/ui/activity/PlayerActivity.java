@@ -27,6 +27,7 @@ import com.pindiboy.playit.presenter.contract.PlayerContract;
 import com.pindiboy.playit.ui.BaseActivity;
 import com.pindiboy.playit.ui.adapter.VideosAdapter;
 import com.pindiboy.playit.util.DateUtil;
+import com.pindiboy.playit.util.FileUtil;
 import com.pindiboy.playit.util.Logger;
 import com.pindiboy.playit.util.NumberUtil;
 import com.pindiboy.playit.util.TipUtil;
@@ -229,6 +230,7 @@ public class PlayerActivity extends BaseActivity<PlayerPresenter> implements Pla
         intent.putExtra(DownloadActivity.INTENT_EXTRA_DOWNLOADDASH, false);
         intent.putExtra(DownloadActivity.INTENT_EXTRA_INCLUDEWEBM, false);
         intent.putExtra(DownloadActivity.INTENT_EXTRA_PARSEDASHMANIFEST, false);
+        intent.putExtra(DownloadActivity.INTENT_EXTRA_DOWNLOAD_DIR, FileUtil.getVideosDir());
         startActivity(intent);
     }
 
