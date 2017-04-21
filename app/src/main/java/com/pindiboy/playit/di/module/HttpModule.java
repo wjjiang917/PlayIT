@@ -1,7 +1,7 @@
 package com.pindiboy.playit.di.module;
 
 import com.pindiboy.playit.App;
-import com.pindi.play.it.BuildConfig;
+import com.pindi.playkar.BuildConfig;
 import com.pindiboy.playit.common.Constant;
 import com.pindiboy.playit.di.qualifier.ServiceType;
 import com.pindiboy.playit.model.http.api.ChannelApi;

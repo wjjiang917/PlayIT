@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.pindi.play.it.R;
+import com.pindi.playkar.R;
 import com.pindiboy.playit.common.Constant;
 import com.pindiboy.playit.model.bean.youtube.ItemId;
 import com.pindiboy.playit.model.bean.youtube.Snippet;

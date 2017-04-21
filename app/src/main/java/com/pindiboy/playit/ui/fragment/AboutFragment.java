@@ -6,8 +6,8 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.TextView;
 
-import com.pindi.play.it.BuildConfig;
-import com.pindi.play.it.R;
+import com.pindi.playkar.BuildConfig;
+import com.pindi.playkar.R;
 import com.pindiboy.playit.ui.SimpleFragment;
 
 import butterknife.BindView;

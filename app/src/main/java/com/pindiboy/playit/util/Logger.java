@@ -3,7 +3,7 @@ package com.pindiboy.playit.util;
 import android.os.Environment;
 import android.util.Log;
 
-import com.pindi.play.it.BuildConfig;
+import com.pindi.playkar.BuildConfig;
 
 import java.io.File;
 import java.io.FileOutputStream;
