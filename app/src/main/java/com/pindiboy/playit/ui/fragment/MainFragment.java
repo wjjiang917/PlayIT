@@ -4,7 +4,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
-import com.pindiboy.playit.R;
+import com.pindi.play.it.R;
 import com.pindiboy.playit.ui.SimpleFragment;
 import com.pindiboy.playit.ui.ViewPagerAdapter;
 

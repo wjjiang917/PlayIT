@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import com.pindiboy.playit.R;
+import com.pindi.play.it.R;
 import com.pindiboy.playit.model.bean.IpInfo;
 import com.pindiboy.playit.presenter.SplashPresenter;
 import com.pindiboy.playit.presenter.contract.SplashContract;

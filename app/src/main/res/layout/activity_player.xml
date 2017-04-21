@@ -176,6 +176,7 @@
         android:background="@drawable/background_item_selected"
         android:clickable="true"
         android:padding="8dp"
+        android:visibility="gone"
         app:srcCompat="@drawable/ic_file_download_24dp" />
 
     <ImageView

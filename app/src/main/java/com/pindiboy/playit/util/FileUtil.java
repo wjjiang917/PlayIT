@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Base64;
 
-import com.pindiboy.playit.BuildConfig;
+import com.pindi.play.it.BuildConfig;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

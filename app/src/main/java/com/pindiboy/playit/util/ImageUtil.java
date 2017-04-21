@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.pindiboy.playit.R;
+import com.pindi.play.it.R;
 
 import java.io.File;
 import java.io.FileInputStream;

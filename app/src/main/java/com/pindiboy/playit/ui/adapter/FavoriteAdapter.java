@@ -4,7 +4,7 @@ import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseItemDraggableAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.pindiboy.playit.R;
+import com.pindi.play.it.R;
 import com.pindiboy.playit.model.bean.youtube.Snippet;
 import com.pindiboy.playit.util.DateUtil;
 import com.pindiboy.playit.util.ImageUtil;

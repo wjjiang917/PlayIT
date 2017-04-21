@@ -16,7 +16,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.pindiboy.playit.FullScreenManager;
-import com.pindiboy.playit.R;
+import com.pindi.play.it.R;
 import com.pindiboy.playit.common.Constant;
 import com.pindiboy.playit.model.bean.youtube.Item;
 import com.pindiboy.playit.model.bean.youtube.ItemId;
